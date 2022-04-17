@@ -6893,6 +6893,7 @@ static inline int find_best_target(struct task_struct *p, int *backup_cpu,
 	int best_idle_cstate = INT_MAX;
 	struct sched_domain *sd;
 	struct sched_group *sg;
+	struct task_struct *curr_tsk;
 	int best_active_cpu = -1;
 	int best_idle_cpu = -1;
 	int target_cpu = -1;
@@ -6902,7 +6903,6 @@ static inline int find_best_target(struct task_struct *p, int *backup_cpu,
 
 	schedstat_inc(p, se.statistics.nr_wakeups_fbt_attempts);
 	schedstat_inc(this_rq(), eas_stats.fbt_attempts);
-	struct task_struct *curr_tsk;
 
 	/*
 	 * In most cases, target_capacity tracks capacity_orig of the most
